@@ -1,3 +1,5 @@
+import os
+
 import PySimpleGUI as sg
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -33,7 +35,8 @@ def web_driver() -> webdriver:
 
 
 def add_style():
-    with open("style.css", mode="r", encoding="utf-8") as f:
+    cur_path = os.path.dirname(os.path.abspath(__file__))
+    with open(f"{cur_path}/style.css", mode="r", encoding="utf-8") as f:
         return f.read()
 
 
