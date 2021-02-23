@@ -62,6 +62,7 @@ def main():
     input_text = get_input_text()
     driver = web_driver()
     try:
+        driver.maximize_window()
         url_text = get_url_text(input_text)
         driver.get(f"https://www.kenjisugimoto.com/penji/index.html?penji={url_text}")
         js = gen_js(input_text)
