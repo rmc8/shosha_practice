@@ -13,7 +13,7 @@ def get_input_text():
         [sg.Multiline("", size=(40, 8))],
         [sg.Submit(button_text="OK")],
     ]
-    window = sg.Window("ASIN Input", layout)
+    window = sg.Window("Input", layout)
     while True:
         event, values = window.read()
         if event is None or event in (sg.WIN_CLOSED, "Exit"):
