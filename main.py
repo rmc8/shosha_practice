@@ -7,7 +7,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 def get_input_text():
     sg.theme("Black")
     layout = [
-        [sg.Text("Please enter the ASIN separated by the break.")],
+        [sg.Text("書写用のテキストを入力してください。")],
         [sg.Multiline("", size=(40, 8))],
         [sg.Submit(button_text="OK")],
     ]
@@ -43,7 +43,7 @@ def add_type(char):
 
 def gen_js(txt):
     style = f"<style>{add_style()}</style>"
-    start = """<div id="output" class="output vertical" style="-ms-writing-mode:tb-rl;writing-mode:vertical-rl;">"""
+    start = """<div id="output" class="output vertical" style="-ms-writing-mode:tb-rl;writing-mode:vertical-rl;float:right;padding-right:40px;">"""
     end = "</div>"
     char_list = list(txt)
     tag_list = [add_type(c) for c in char_list]
@@ -59,9 +59,9 @@ def get_url_text(text):
 
 
 def main():
+    input_text = get_input_text()
     driver = web_driver()
     try:
-        input_text = get_input_text()
         url_text = get_url_text(input_text)
         driver.get(f"https://www.kenjisugimoto.com/penji/index.html?penji={url_text}")
         js = gen_js(input_text)
